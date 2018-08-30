@@ -325,7 +325,6 @@ public class LoginActivity extends AppCompatActivity {
                 editor.clear();
                 editor.apply();
             }
-
             //START MAIN ACTIVITY
             Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
             mainIntent.putExtra("intentvevonev", vevonev);
@@ -363,8 +362,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_online) {
-
-
             return true;
         }
 
