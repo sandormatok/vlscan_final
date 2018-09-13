@@ -1129,7 +1129,8 @@ int layout select_dialog_item_material 0x7f0a003d
 int layout select_dialog_multichoice_material 0x7f0a003e
 int layout select_dialog_singlechoice_material 0x7f0a003f
 int layout support_simple_spinner_dropdown_item 0x7f0a0040
-int menu menu_main 0x7f0b0000
+int menu menu_login 0x7f0b0000
+int menu menu_main 0x7f0b0001
 int mipmap ic_launcher 0x7f0c0000
 int raw sound3 0x7f0d0000
 int string abc_action_bar_home_description 0x7f0e0000

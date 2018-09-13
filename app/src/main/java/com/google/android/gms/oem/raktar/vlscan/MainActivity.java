@@ -22,6 +22,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.wifi.SupplicantState;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String bruttoRound,nettoRound;
     String globalAroszt,url;
     public static String barcode3;
-    String globalvevoKod = "";
+    String globalvevoKod, getGlobalvevoNev = "";
     private static final int RC_BARCODE_CAPTURE = 9001;
 
 //san suriel ADMIN VEVŐKÓDOK: (egyenlóre a LoginActivity-n is meg kell őket adni)
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "BarcodeMain";
     private String m_Text = "";
     private String manualInput = "NO";
-    boolean devMode = false;
+    boolean onlinemode, devMode = false;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //getSupportActionBar().setTitle("Raktári Készletellenörző");
 
         setContentView(R.layout.activity_main);
-          TextView toptextView = (TextView) findViewById(R.id.toptextView);
+        TextView toptextView = (TextView) findViewById(R.id.toptextView);
 
         //tablerows
         tableRow02 = (TextView) findViewById(R.id.table02);
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tableRow61 = (TextView) findViewById(R.id.table61);
         tableRow62 = (TextView) findViewById(R.id.table62);
 
+        //san suriel toptextviex fekete online módban!
 
         //todo: nem hiszem, hogy átjön a vevőnév! ???
         Intent intent = getIntent();
@@ -113,7 +117,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String vevonev = getIntent().getExtras().getString("intentvevonev");
             globalAroszt = getIntent().getExtras().getString("intentaroszt");
             globalvevoKod = getIntent().getExtras().getString("intentvevokod");
+            onlinemode = getIntent().getExtras().getBoolean("itentonlinemode", false);
             toptextView.setText(vevonev);
+            getGlobalvevoNev = vevonev;
+                }
+
+    //    if(adminokList.contains(globalvevoKod)){
+        if(onlinemode){
+            toptextView.setBackgroundColor(Color.BLACK);
+            toptextView.setTextColor(Color.WHITE);
+            toptextView.setText(getGlobalvevoNev);
         }
 
         //*** MAIN ONCLICK LISTENERS ***
@@ -130,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      * @param v The view that was clicked.
      */
-
 
     //*** MAIN ON CLICK ***
     @Override
@@ -205,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (data != null) {
                     final MediaPlayer mp = MediaPlayer.create(this, R.raw.sound3);
                     mp.start();
-
                     barcode3 = data.getStringExtra("barcode3");
                     tableRow02.setText(barcode3);
                     getData();
@@ -228,7 +239,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tableRow02.setText("");
         String ssid = "";
         //WIFI Bekapcsolása, csatlakozás a VLEURO wifihez
-/*
+
+        WifiManager wifiManager=(WifiManager)getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo;
         wifiInfo = wifiManager.getConnectionInfo();
         if (wifiInfo.getSupplicantState() == SupplicantState.COMPLETED) {
@@ -239,18 +251,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
            if (!ssid.equals("\"VLEURO\"")) {
 
-                if (devMode) {
-                } else {
+               if (onlinemode) {
+               } else {
+                   if (!ssid.equals("\"VLEURO\"")) {
+                       Toast.makeText(MainActivity.this, "NEM CSATLAKOZIK A \"VLEURO\" WIFI HÁLÓZATHOZ!", Toast.LENGTH_LONG).show();
 
-                    tableRow22.setText("NEM CSATLAKOZIK A \"VLEURO\" WIFI HÁLÓZATHOZ!");
-                    tableRow22.setBackgroundColor(Color.RED);
-                    tableRow12.setText("");
-                    tableRow32.setText("");
-                    tableRow42.setText("");
-                    tableRow52.setText("");
-                    return;
-                }
-        }*/
+                       return;
+                   }
+               }
+           }
 
         String id = barcode3;
         // Toast.makeText(MainActivity.this, barcode3, Toast.LENGTH_LONG).show();
@@ -260,9 +269,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             manualInput = "NO";
         }
 //san suriel
+
+        /*
+        TextView toptextView = (TextView) findViewById(R.id.toptextView);
+        toptextView.setBackgroundResource(Color.BLACK);
+        toptextView.setTextColor(Color.WHITE);
+        */
+
+
         if(adminokList.contains(globalvevoKod)){
             url = DATA_RAKTAR_KESZLET_URL_ONLINE + id + "&vkod=" + globalvevoKod;
-        } else {
+            } else {
             url = DATA_RAKTAR_KESZLET_URL + id + "&vkod=" + globalvevoKod;
         }
 
@@ -281,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Hibás lekérdezés!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Sikertelen kérés!", Toast.LENGTH_LONG).show();
                         //Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });

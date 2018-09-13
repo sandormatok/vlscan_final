@@ -129,7 +129,7 @@ ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:33:13-70
 activity#com.google.android.gms.oem.raktar.vlscan.MainActivity
-ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:36:10-41:20
+ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:36:9-41:20
 	android:screenOrientation
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:38:13-49
 	android:label

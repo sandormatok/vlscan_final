@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         String prefsVevokod = prefs.getString("vevokod", "");
         String prefsVevojelszo = prefs.getString("vevojelszo", "");
         String prefsVevonev = prefs.getString("vevonev", "");
+        onlinemode = prefs.getBoolean("onlinemode", false);
 
 
         vevonevLogin.setText(prefsVevonev);
@@ -105,11 +106,8 @@ public class LoginActivity extends AppCompatActivity {
         //WIFI KONFIGURÁCIÓ
 //san suriel
         wifissid = "VLEURO";
-
         wifipass = "\"vleurokft\"";
-
         final WifiConfiguration wifiConfig = new WifiConfiguration();
-
 //san suriel
         wifiConfig.SSID = String.format("\"%s\"", wifissid);
         wifiConfig.preSharedKey = String.format("\"%s\"", wifipass);
@@ -128,7 +126,8 @@ public class LoginActivity extends AppCompatActivity {
 //WIFI ELLENŐRZÉS
 // san.suriel       if(!globalSsid.equals(wifissid);
         if (!globalSsid.equals("\"VLEURO\"")) {
-                allowLogin = false;
+        //san suriel security override??
+                allowLogin = true;
                 View view = View.inflate(this, R.layout.alert_dialog_net, null);
 
                 //CSATLAKOZÁS A VLEURO WIFI-HEZ
@@ -255,7 +254,7 @@ public class LoginActivity extends AppCompatActivity {
         String url = "";
 
         //Admin user-ek az online adatbázishoz kapcsolódnak...
-       if(adminokList.contains(globalVevokod)){
+       if(adminokList.contains(globalVevokod) && onlinemode) {
             url = DATA_RAKTAR_KESZLET_URL_ONLINE + id + "&vkod=" + globalVevokod;
         } else {
             url = DATA_RAKTAR_KESZLET_URL + id + "&vkod=" + globalVevokod;
@@ -317,6 +316,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("vevokod", globalVevokod);
                 editor.putString("vevonev", globalVevonev);
                 editor.putString("vevojelszo", globalPassword);
+                editor.putBoolean("onlinemode", onlinemode);
                 editor.putInt("tippCount", 1);
                 editor.putBoolean("maradjon", true);
                 editor.apply();
@@ -325,11 +325,13 @@ public class LoginActivity extends AppCompatActivity {
                 editor.clear();
                 editor.apply();
             }
+
             //START MAIN ACTIVITY
             Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
             mainIntent.putExtra("intentvevonev", vevonev);
             mainIntent.putExtra("intentaroszt", aroszt);
             mainIntent.putExtra("intentvevokod", globalVevokod);
+            mainIntent.putExtra("itentonlinemode", onlinemode);
             setResult(CommonStatusCodes.SUCCESS, mainIntent);
             startActivity(mainIntent);
             finish();
@@ -345,7 +347,16 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        MenuItem onlinemodeMenu = menu.findItem(R.id.action_online);
+        MenuItem logoutMenu = menu.findItem(R.id.action_settings);
+        onlinemodeMenu.setVisible(true);
+        onlinemodeMenu.setVisible(false);
+         if(adminokList.contains(globalVevokod)) {
+            onlinemodeMenu.setVisible(true);
+            onlinemodeMenu.setChecked(onlinemode);
+            }
+
         return true;
     }
 
@@ -357,15 +368,22 @@ public class LoginActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+   if (id == R.id.action_settings) {
+           return true;
+       }
 
         if (id == R.id.action_online) {
-            return true;
+            if(item.isChecked()){
+                // If item already checked then unchecked it
+                item.setChecked(false);
+                onlinemode = false;
+            }else {
+                // If item is unchecked then checked it
+                item.setChecked(true);
+                onlinemode = true;
+            }
+           // return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 }

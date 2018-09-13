@@ -3721,7 +3721,8 @@ public final class R {
     public static final int support_simple_spinner_dropdown_item=0x7f0a0040;
   }
   public static final class menu {
-    public static final int menu_main=0x7f0b0000;
+    public static final int menu_login=0x7f0b0000;
+    public static final int menu_main=0x7f0b0001;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0c0000;
