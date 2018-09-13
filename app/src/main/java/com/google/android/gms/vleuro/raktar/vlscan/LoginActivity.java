@@ -1,4 +1,4 @@
-package com.google.android.gms.oem.raktar.vlscan;
+package com.google.android.gms.vleuro.raktar.vlscan;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -41,8 +41,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.google.android.gms.oem.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL;
-import static com.google.android.gms.oem.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL_ONLINE;
+import static com.google.android.gms.vleuro.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL;
+import static com.google.android.gms.vleuro.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL_ONLINE;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     Boolean onlinemode = false;
 
 //san suriel ADMIN VEVŐKÓDOK: (egyenlóre a MainActivity-n is meg kell őket adni)
-    String[] adminok = new String[]{"0120401"};
+    String[] adminok = new String[]{"0120401","0885701"};
     List<String> adminokList = Arrays.asList(adminok);
 
     //*** LOGIN ONCREATE ***
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
             String globalSsidCHK = wifiInfo.getSSID();
-            Toast toast = Toast.makeText(getApplicationContext(),globalSsidCHK , Toast.LENGTH_LONG);
+            //Toast toast = Toast.makeText(getApplicationContext(),globalSsidCHK , Toast.LENGTH_LONG);
                 alert.show();
             }
 
@@ -211,9 +211,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         loginInputVevokod.setText(globalVevokod, TextView.BufferType.EDITABLE);
                         loginInputPassword.setText(globalPassword, TextView.BufferType.EDITABLE);
+
                     } else {
-
-
                         Toast toast = Toast.makeText(getApplicationContext(), "Hibás QR KÓD! ," + qrcodeString1 + ", " + qrcodeString2, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.BOTTOM, 0, 20);
                         toast.show();
@@ -350,9 +349,15 @@ public class LoginActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_login, menu);
         MenuItem onlinemodeMenu = menu.findItem(R.id.action_online);
         MenuItem logoutMenu = menu.findItem(R.id.action_settings);
-        onlinemodeMenu.setVisible(true);
+        logoutMenu.setVisible(true);
         onlinemodeMenu.setVisible(false);
-         if(adminokList.contains(globalVevokod)) {
+
+        //onCreate shared frefs not avaible at menu creation time, so call itt first here...
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        globalVevokod = prefs.getString("vevokod", "");
+        onlinemode = prefs.getBoolean("onlinemode", false);
+
+        if(adminokList.contains(globalVevokod)) {
             onlinemodeMenu.setVisible(true);
             onlinemodeMenu.setChecked(onlinemode);
             }

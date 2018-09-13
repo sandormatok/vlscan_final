@@ -5,7 +5,7 @@
     android:background="#7491a6"
     xmlns:tools="http://schemas.android.com/tools"
 
-    tools:context="com.google.android.gms.oem.raktar.vlscan.MainActivity">
+    tools:context="com.google.android.gms.vleuro.raktar.vlscan.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"

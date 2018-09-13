@@ -35,7 +35,7 @@ INJECTED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\Andro
 INJECTED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:2:1-61:12
 INJECTED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:2:1-61:12
 	package
-		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:3:5-55
+		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:3:5-58
 		INJECTED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -103,7 +103,7 @@ MERGED from [com.android.volley:volley:1.1.1] C:\Users\san\.gradle\caches\transf
 	android:supportsRtl
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:27:9-35
 	android:label
-		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:26:9-39
+		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:26:9-47
 	android:hardwareAccelerated
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:24:9-43
 	android:fullBackupContent
@@ -128,7 +128,7 @@ ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidM
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:34:13-36
 	android:name
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:33:13-70
-activity#com.google.android.gms.oem.raktar.vlscan.MainActivity
+activity#com.google.android.gms.vleuro.raktar.vlscan.MainActivity
 ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:36:9-41:20
 	android:screenOrientation
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:38:13-49
@@ -137,16 +137,16 @@ ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidM
 	android:theme
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:37:13-69
 	android:name
-		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:39:13-81
-activity#com.google.android.gms.oem.raktar.vlscan.BarcodeCaptureActivity
+		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:39:13-84
+activity#com.google.android.gms.vleuro.raktar.vlscan.BarcodeCaptureActivity
 ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:43:9-46:60
 	android:label
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:46:13-57
 	android:theme
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:44:13-63
 	android:name
-		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:45:13-91
-activity#com.google.android.gms.oem.raktar.vlscan.LoginActivity
+		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:45:13-94
+activity#com.google.android.gms.vleuro.raktar.vlscan.LoginActivity
 ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:48:9-58:20
 	android:screenOrientation
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:51:13-49
@@ -155,7 +155,7 @@ ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidM
 	android:theme
 		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:52:13-69
 	android:name
-		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:49:13-82
+		ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:49:13-85
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\san\StudioProjects\Suriel\vlscan_final\app\src\main\AndroidManifest.xml:53:13-56:29
 action#android.intent.action.MAIN

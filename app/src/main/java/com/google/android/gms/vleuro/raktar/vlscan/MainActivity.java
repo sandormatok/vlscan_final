@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.android.gms.oem.raktar.vlscan;
+package com.google.android.gms.vleuro.raktar.vlscan;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -55,8 +55,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.google.android.gms.oem.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL;
-import static com.google.android.gms.oem.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL_ONLINE;
+import static com.google.android.gms.vleuro.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL;
+import static com.google.android.gms.vleuro.raktar.vlscan.Config.DATA_RAKTAR_KESZLET_URL_ONLINE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

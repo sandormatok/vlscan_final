@@ -4,10 +4,11 @@
     <item name="masked" type="id"/>
 
     <string name="ok">OK</string>
+    <string name="title_app_name">Vl-Scan</string>
     <string name="permission_camera_rationale">A kamera nem elérhető!</string>
     <string name="no_camera_permission">Ez az app nem tud elindulni ezen a készüléken. Kamera jogosultságra van szükség!</string>
     <string name="low_storage_error">A vonalkód felismerő nem tölthető le, mert kevés a hely!</string>
-    <string name="title_activity_main">VL-SCAN Raktár</string>
+    <string name="title_activity_main">Vl-Scan</string>
     <string name="barcode_header"></string>
     <string name="read_barcode">BEOLVASÁS</string>
     <string name="enter_barcode">BEÍRÁS</string>
@@ -23,7 +24,7 @@
     <string name="boltok_prompt">Válassz boltot!</string>
     <string name="spinner_prompt">Válassz ki egy üzletet!</string>
     <string name="multiprocessor">Gyors mód</string>
-    <string name="title_activity_login">VL-Scan Raktár</string>
+    <string name="title_activity_login">VL-Scan</string>
     <string name="action_settings">Beállítások</string>
     <string name="action_online">Online Mód!</string>
 

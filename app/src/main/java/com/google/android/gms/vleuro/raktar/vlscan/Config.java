@@ -1,4 +1,4 @@
-package com.google.android.gms.oem.raktar.vlscan;
+package com.google.android.gms.vleuro.raktar.vlscan;
 
 
 public class Config {
