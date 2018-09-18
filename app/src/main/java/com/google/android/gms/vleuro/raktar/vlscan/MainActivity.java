@@ -17,18 +17,23 @@
 package com.google.android.gms.vleuro.raktar.vlscan;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +57,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
@@ -234,11 +243,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+
+
+
     //*** MAIN GETDATA ***
     private void getData() {
         tableRow02.setText("");
         String ssid = "";
         //WIFI Bekapcsolása, csatlakozás a VLEURO wifihez
+
+
+
 
         WifiManager wifiManager=(WifiManager)getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo;
@@ -275,6 +291,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toptextView.setBackgroundResource(Color.BLACK);
         toptextView.setTextColor(Color.WHITE);
         */
+
+
+
 
 
         if(adminokList.contains(globalvevoKod)){

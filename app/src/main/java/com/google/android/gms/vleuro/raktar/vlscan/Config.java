@@ -4,7 +4,11 @@ package com.google.android.gms.vleuro.raktar.vlscan;
 public class Config {
     // URL, vagy IP !!!
     //public static final String DATA_RAKTAR_KESZLET_URL = "http://webserver.vleuro.hu/raktar_keszlet_san.php?id=";
-    public static final String DATA_RAKTAR_KESZLET_URL = "http://localwebszerver.vleuro.hu/raktar_keszlet_san.php?id=";
+    //public static final String DATA_RAKTAR_KESZLET_URL = "http://localwebszerver.vleuro.hu/raktar_keszlet_san.php?id=";
+
+
+    //public static final String DATA_RAKTAR_KESZLET_URL = "http://192.168.0.19/raktar_keszlet_san.php?id=";
+    public static final String DATA_RAKTAR_KESZLET_URL = "http://webszerver.vleuro.hu/raktar_keszlet_san_WCHRWSFSDGDRGWFADWDWAD.php?id=";
     public static final String DATA_RAKTAR_KESZLET_URL_ONLINE = "http://webszerver.vleuro.hu/raktar_keszlet_san_WCHRWSFSDGDRGWFADWDWAD.php?id=";
 
     //nem működik most...
